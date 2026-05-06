@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // 作品データ全件取得
   let works = [];
   try {
-    const res = await fetch("/api/works");
+    const res = await fetch(`${API_BASE}/api/works`);
     if (!res.ok) throw new Error("Fetch failed");
     works = await res.json();
   } catch (e) {
