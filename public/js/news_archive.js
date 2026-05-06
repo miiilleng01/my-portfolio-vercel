@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentPage = 1;
     const itemsPerPage = 30; // 1ページ30件
 
-    fetch("/api/news")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/news`)
         .then(response => response.json())
         .then(data => {
             // IDの降順（新しい順）に並べ替え
