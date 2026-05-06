@@ -1,5 +1,4 @@
-const JAVA_URL = "https://my-portfolio-admin-vhpt.onrender.com";
-const API_BASE = "";
+const API_BASE = "https://api.msddmii-portfolio.com";
 
 /**
  * YouTubeのURLからIDを抽出（厳しめ判定版）
