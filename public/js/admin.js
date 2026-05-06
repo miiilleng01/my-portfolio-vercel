@@ -1,8 +1,9 @@
 
 // ローカルと本番を自動で判定して切り替え ---
-const API_BASE = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.hostname.startsWith("192.168.")
-  ? "http://192.168.3.71:8080"                  // ローカル（自分のPC）で動いてる時
-  : "https://api.msddmii-portfolio.com";         // 本番（Renderなど）で動いてる時 
+const API_BASE =
+  import.meta.env.DEV
+    ? "http://localhost:3031"
+    : "http://148.230.103.202:3031";
 
 const form = document.getElementById("uploadForm");
 const typeSelect = document.querySelector('[name="type"]');
@@ -36,9 +37,8 @@ form.addEventListener("submit", async e => {
   const formData = new FormData(form);
 
   try {
-    // --- 修正箇所2: 送信先をフルURLにする ---
-    // --- 修正箇所3: credentials: "include" を追加してログイン情報を送る ---
-    const res = await fetch(`${API_BASE}/api/admin/upload`, {
+  
+    const res = await fetch(`${API_BASE}/api/works`, {
       method: "POST",
       body: formData,
       credentials: "include" // ★ これがないと Java 側で「未ログイン」扱いになります
